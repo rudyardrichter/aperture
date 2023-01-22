@@ -1,8 +1,9 @@
 # aperture
 
-A demo of several web and infrastructure tools, mainly using python for web
-services, kubernetes/helm/terraform for infrastructure, and [localstack] for
-emulating AWS services. A sort of "home lab" for playing with kubernetes etc.
+A demo of several web and infrastructure tools, using an assortment of web
+service tools, kubernetes/helm/terraform for infrastructure, and [localstack]
+for emulating AWS services. A sort of "home lab" for playing with kubernetes
+etc.
 
 (Yes, the infrastructure is way overkill given what the applications are; it's
 meant as a demo.)
