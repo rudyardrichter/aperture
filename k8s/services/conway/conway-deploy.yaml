@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conway-deployment
+spec:
+  selector:
+    matchLabels:
+      app: conway
+      release: latest
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: conway
+        release: latest
+    spec:
+      containers:
+        - name: conway
+          image: conway:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
