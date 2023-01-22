@@ -21,7 +21,7 @@ Named lovingly after [Aperture Science][].
 
 To create the cluster locally (all from root directory):
 ```
-export KUBECONFIG=./config/kubeconfig
+export KUBECONFIG=$(realpath ./config/kubeconfig)
 k3d cluster create aperture
 terraform -chdir=tf-local init
 terraform -chdir=tf-local plan -out plan
