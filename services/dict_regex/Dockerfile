@@ -15,4 +15,4 @@ RUN cd src/match_engine \
 RUN python -m pip install poetry
 RUN poetry install  # TODO: install from lockfile
 
-ENTRYPOINT ["poetry", "run", "uvicorn", "server.main:app"]
+ENTRYPOINT ["poetry", "run", "uvicorn", "server.main:app", "--host", "0.0.0.0", "--port", "80"]

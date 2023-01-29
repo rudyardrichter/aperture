@@ -1,0 +1,3 @@
+- [ ] Build docker images with unique version tags
+- [ ] nginx reverse proxy
+- [ ] more todos

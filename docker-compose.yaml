@@ -1,0 +1,13 @@
+version: "3"
+services:
+  conway:
+    image: conway
+    build: ./services/conway
+    ports:
+      - "80:80"
+  dict-regex:
+    image: dict-regex
+    build: ./services/dict_regex
+    ports:
+      - "80:80"
+

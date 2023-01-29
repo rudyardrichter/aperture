@@ -31,27 +31,3 @@ RUN cd client \
 FROM nginx:alpine
 
 COPY --from=builder /app/client/dist /usr/share/nginx/html
-
-#####
-#####FROM node:current-alpine AS client
-#####
-#####WORKDIR /app
-#####
-#####COPY --from=wasm /app/wasm /app/wasm
-#####RUN mkdir /app/client
-#####COPY client/package.json /app/client/
-#####COPY client /app/client
-#####RUN cd client \
-#####    && npm install \
-#####    && ls node_modules/wasm-conway \
-#####    && npm run build
-#####
-#####FROM scratch
-#####
-#####WORKDIR /app
-#####COPY --from=wasm /app/wasm/pkg /app/wasm/pkg
-#####COPY --from=client /app/client/dist /app/client
-#####
-#####COPY docker_run.sh /docker_run.sh
-#####
-#####CMD ["/docker_run.sh"]

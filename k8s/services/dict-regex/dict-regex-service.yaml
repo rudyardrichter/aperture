@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name:
-    conway-service
+    dict-regex-service
 spec:
   selector:
-    app: conway
+    app: dict-regex
     release: latest
   type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8000
       name: http
       nodePort: null

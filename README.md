@@ -14,6 +14,8 @@ Named lovingly after [Aperture Science][].
 
 ## Requirements
 
+- [docker][]
+- [docker-compose][] to build all the images at once
 - [kubectl][]
 - [k3d][]
 - [terraform][]
@@ -29,26 +31,36 @@ terraform -chdir=tf-local plan -out plan
 terraform -chdir=tf-local apply plan
 ```
 
-Build images:
-```
-docker build -t conway services/conway
-k3d image import --cluster aperture conway
+Build images and import them into k3d:
+```bash
+docker compose build
+k3d image import --cluster aperture conway dict-regex
 ```
 
 Deploy kubernetes resources:
-```
-kubectl apply -f k8s/services/conway/conway-service.yaml
-kubectl apply -f k8s/services/conway/conway-deploy.yaml
+```bash
+declare -a services=("conway" "dict-regex")
+for service in "${services[@]}"; do
+    kubectl apply -f "k8s/services/${service}/${service}-service.yaml"
+    kubectl apply -f "k8s/services/${service}/${service}-deploy.yaml"
+done
 ```
 
 ## Services
 
-### Conway
+### conway
 
 Simple game of life implementation based on the rust wasm tutorial.
 
+### dict-regex
+
+A tiny dictionary lookup service; serves an endpoint which accepts a regex to
+match words against.
+
 
 [Aperture Science]: https://theportalwiki.com/wiki/Aperture_Science
+[docker]: https://docs.docker.com/get-docker/
+[docker-compose]: https://docs.docker.com/compose/install/
 [kubectl]: https://kubernetes.io/docs/tasks/tools/
 [k3d]: https://k3d.io/v5.4.6/
 [localstack]: https://localstack.cloud/
