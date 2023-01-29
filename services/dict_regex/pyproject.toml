@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+include = ["static/words.txt"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.89.1"
+match_engine = {path = "src/match_engine/target/wheels/match_engine-0.1.0.tar.gz"}
+uvicorn = "^0.20.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.6.0"
+isort = "^5.10.1"
+mypy = "^0.971"
+pytest = "^7.1.2"
+tox = "^3.25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
