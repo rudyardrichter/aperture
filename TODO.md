@@ -1,3 +1,5 @@
 - [ ] Build docker images with unique version tags
 - [ ] nginx reverse proxy
+- [ ] do something interesting to do with terraform + localstack
+- [ ] mock TLS setup
 - [ ] more todos

@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:
-    conway-service
+  name: conway-service
+  namespace: default
 spec:
   selector:
     app: conway
