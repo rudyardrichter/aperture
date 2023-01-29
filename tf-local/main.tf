@@ -18,12 +18,6 @@ provider "kubernetes" {
   config_path    = var.k8s_config_path
 }
 
-resource "kubernetes_namespace" "aperture_namespace" {
-  metadata {
-    name = "ns-aperture"
-  }
-}
-
 provider "helm" {
   kubernetes {
     config_context = var.k8s_config_context
