@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: localstack
+  namespace: localstack
+spec:
+  selector:
+    matchLabels:
+      app: localstack
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: localstack
+        release: latest
+    spec:
+      containers:
+        - name: localstack
+          image: localstack/localstack:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4566

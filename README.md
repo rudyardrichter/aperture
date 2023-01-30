@@ -33,13 +33,17 @@ terraform -chdir=tf-local apply plan
 
 Build images and import them into k3d:
 ```bash
+# Build images for our services and import
 docker compose build
 k3d image import --cluster aperture conway dict-regex
+# Pull localstack and import
+docker pull localstack/localstack
+k3d image import --cluster aperture localstack/localstack
 ```
 
 Deploy kubernetes resources:
 ```bash
-declare -a services=("conway" "dict-regex")
+declare -a services=("conway" "dict-regex" "localstack")
 for service in "${services[@]}"; do
     kubectl apply -f "k8s/services/${service}/${service}-service.yaml"
     kubectl apply -f "k8s/services/${service}/${service}-deploy.yaml"

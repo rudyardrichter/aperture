@@ -18,6 +18,12 @@ provider "kubernetes" {
   config_path    = var.k8s_config_path
 }
 
+resource "kubernetes_namespace" "localstack_namespace" {
+  metadata {
+    name = "localstack"
+  }
+}
+
 provider "helm" {
   kubernetes {
     config_context = var.k8s_config_context
