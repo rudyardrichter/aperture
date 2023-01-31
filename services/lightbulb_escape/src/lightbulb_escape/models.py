@@ -86,6 +86,11 @@ class PrisonerTop(PrisonerAggregator):
 
 
 class KTree(Simulation):
+    """
+    Right now the logic only works if the number of prisoners perfectly fits a
+    tree with branching factor k.
+    """
+
     def __init__(
         self,
         n_prisoners: int,
